@@ -1,0 +1,33 @@
+PODS:
+  - Alamofire (3.4.0)
+  - BTNavigationDropdownMenu (0.3)
+  - FontAwesome.swift (0.7.3)
+  - Kanna (1.0.6)
+  - ReachabilitySwift (2.3.3)
+  - SideMenu (1.1.7)
+  - SwiftyJSON (2.3.2)
+  - SWXMLHash (2.3.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.4)
+  - BTNavigationDropdownMenu (~> 0.3)
+  - FontAwesome.swift (~> 0.7)
+  - Kanna (~> 1.0)
+  - ReachabilitySwift (~> 2.3)
+  - SideMenu (~> 1.1)
+  - SwiftyJSON (~> 2.3)
+  - SWXMLHash (~> 2.3)
+
+SPEC CHECKSUMS:
+  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
+  BTNavigationDropdownMenu: c36d20785253699046fdd295698c24b1d1c18f53
+  FontAwesome.swift: f694fe0f667d6d3390b5919cdb0556a27b75d427
+  Kanna: 9f30945bbd293a609f698ea164687ccc0990ff60
+  ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
+  SideMenu: 7b420772e1aa7a2b3a0b0e191566e7e8e0868f53
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  SWXMLHash: 795c66e74f4cc9473ad6465c6653c5a6f59f417e
+
+PODFILE CHECKSUM: 6b5d9588848a67aafd58f4a1fe9d1b25508bea3b
+
+COCOAPODS: 1.0.0
