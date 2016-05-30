@@ -15,8 +15,8 @@ import BTNavigationDropdownMenu
 import CoreSpotlight
 import MobileCoreServices
 import SwiftyJSON
-import FontAwesome_swift
-import SideMenu
+import Firebase
+import GoogleMobileAds
 
 class NewsTableViewController: UITableViewController {
     
@@ -30,23 +30,21 @@ class NewsTableViewController: UITableViewController {
     var feedJson: JSON = []
     var feedList = [String]()
     
-    var tableTopY: Float = 0
-    @IBOutlet weak var navBtn: UIBarButtonItem!
+    @IBOutlet weak var bannerView: GADBannerView!
     
     private let networkHelper = NetworkHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let attributes = [NSFontAttributeName: UIFont.fontAwesomeOfSize(16)] as Dictionary!
-        navBtn.setTitleTextAttributes(attributes, forState: .Normal)
-        navBtn.title = String.fontAwesomeIconWithName(.Bars) + "MENU"
-        
-        tableTopY = Float(tableView.contentOffset.y)
+        //set ad    ca-app-pub-8985037610808942/9731448514
+        bannerView.adUnitID = "ca-app-pub-8985037610808942/9731448514"
+        bannerView.rootViewController = self
+        bannerView.adSize = kGADAdSizeSmartBannerPortrait
+        bannerView.loadRequest(GADRequest())
         
         loadJsonData()
-        //init navbar menu
-        setSideMenu()
+
         
         self.seriesItems = self.feedJson["feedmenu"].arrayValue.map{ $0.string!}
         selMenu = self.seriesItems[0]
@@ -61,8 +59,8 @@ class NewsTableViewController: UITableViewController {
         
         //set navigation dropdown menu
         let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, title: seriesItems.first!, items: seriesItems)
-        menuView.cellHeight = 40
-        menuView.cellTextLabelFont = UIFont(name: "HelveticaNeue-Bold", size: 15)
+        menuView.cellHeight = 30
+        menuView.cellTextLabelFont = UIFont(name: "HelveticaNeue-Bold", size: 13)
         menuView.cellTextLabelAlignment = NSTextAlignment.Center
         menuView.arrowPadding = 15
         menuView.animationDuration = 0.5
@@ -73,7 +71,7 @@ class NewsTableViewController: UITableViewController {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0)){
                 self.requestFeeds(self.feedList)
             }
-            
+            FIRAnalytics.logEventWithName(kFIREventViewItem, parameters: [kFIRParameterItemName:self.selMenu])
         }
         menuView.cellBackgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
         
@@ -83,14 +81,6 @@ class NewsTableViewController: UITableViewController {
         checkNetWork()
         
         self.refreshControl?.addTarget(self, action: #selector(NewsTableViewController.refreshFeed(_:)), forControlEvents: .ValueChanged)
-    }
-    
-    private func setSideMenu(){
-        SideMenuManager.menuLeftNavigationController = storyboard?.instantiateViewControllerWithIdentifier("leftmenu") as? UISideMenuNavigationController
-        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
-        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
-        SideMenuManager.menuPresentMode = .ViewSlideOut
-        SideMenuManager.menuBlurEffectStyle = UIBlurEffectStyle.ExtraLight
     }
     
     func loadJsonData() {
@@ -353,7 +343,7 @@ class NewsTableViewController: UITableViewController {
         
         CSSearchableIndex.defaultSearchableIndex().indexSearchableItems(searchableItems) {(error) -> Void in
             if error != nil {
-                print(error?.localizedDescription)
+                //print(error?.localizedDescription)
             }
         }
     }
@@ -420,22 +410,28 @@ class NewsTableViewController: UITableViewController {
     }
     
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! NewsCell
-		let item = self.feedArray[indexPath.row]
-        cell.newsTitle.text = ""
-		cell.newsTitle.text = item.title!
-		// cell.newsSource.text = item.source!
-		cell.pubDate.text = ""
-        cell.pubDate.text = item.pubdate!
-		cell.newsImage.image = nil
-        if item.imageData != nil {
-            cell.newsImage.image = UIImage(data: item.imageData!)
-        }else{
-            self.networkHelper.getImage(item.image!){(result) ->Void in
-                item.imageData = result
+        
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! NewsCell
+            let item = self.feedArray[indexPath.row]
+            cell.newsTitle.text = ""
+            cell.newsTitle.text = item.title!
+            // cell.newsSource.text = item.source!
+            cell.pubDate.text = ""
+            cell.pubDate.text = item.pubdate!
+            cell.newsImage.image = nil
+            if item.imageData != nil {
                 cell.newsImage.image = UIImage(data: item.imageData!)
+            }else{
+                self.networkHelper.getImage(item.image!){(result) ->Void in
+                    item.imageData = result
+                    cell.newsImage.image = UIImage(data: item.imageData!)
+                }
             }
-        }
+            return cell
+            
+            
+        
+        
         
 		/*
         if let imagePath = item.image {
@@ -447,7 +443,7 @@ class NewsTableViewController: UITableViewController {
 			}
 		}
         */
-		return cell
+		
 	}
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

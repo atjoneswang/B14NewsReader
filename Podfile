@@ -13,7 +13,8 @@ target 'B14News' do
   pod 'ReachabilitySwift', '~> 2.3'
   pod 'BTNavigationDropdownMenu', '~> 0.3'
   pod 'SwiftyJSON', '~> 2.3'
-  pod 'SideMenu', '~> 1.1'
+  pod 'Firebase'
+  pod 'Firebase/AdMob'
 
   target 'B14NewsTests' do
     inherit! :search_paths

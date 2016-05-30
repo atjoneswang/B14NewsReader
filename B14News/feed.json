@@ -5,10 +5,15 @@
     "2 SERIES",
     "3 SERIES",
     "4 SERIES",
+    "5 SERIES",
+    "6 SERIES",
+    "7 SERIES",
     "1M",
     "M2",
     "M3",
-    "M4"
+    "M4",
+    "M5",
+    "M6"
   ],
   "1 SERIES": [
     "http://www.bmwmotorshowblog.com/en/bmw-1-series/feed/",
@@ -28,6 +33,18 @@
     "http://www.bimmerfile.com/section/bmw_models/4-series/feed/",
     "http://www.bimmerpost.com/4-series/feed/"
   ],
+  "5 SERIES": [
+    "http://www.bimmerpost.com/5-series/feed/",
+    "http://www.bimmerfile.com/section/bmw_models/5-series-2/feed/"
+  ],
+  "6 SERIES": [
+    "http://www.bimmerpost.com/6-series/feed/",
+    "http://www.bimmerfile.com/section/bmw_models/6-series-2/feed/"
+  ],
+  "7 SERIES": [
+    "http://www.bimmerpost.com/7-series/feed/",
+    "http://www.bimmerfile.com/section/bmw_models/7-series/feed/"
+  ],
   "1M": [
     "http://www.bimmerpost.com/1m/feed/",
     "http://www.bimmerfile.com/section/bmw_models/m/1m/feed/"
@@ -43,5 +60,13 @@
   "M4": [
     "http://www.bimmerfile.com/section/bmw_models/m/m4/feed/",
     "http://www.bimmerpost.com/m4/feed/"
+  ],
+  "M5": [
+    "http://www.bimmerpost.com/m5/feed/",
+    "http://www.bimmerfile.com/section/bmw_models/m/m5/feed/"
+  ],
+  "M6": [
+    "http://www.bimmerpost.com/m6/feed/",
+    "http://www.bimmerfile.com/section/bmw_models/m/m6/feed/"
   ]
 }

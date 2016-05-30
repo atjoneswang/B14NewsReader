@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 import FontAwesome_swift
-
+import Firebase
 
 class NewsDetailViewController: UIViewController, WKNavigationDelegate,UIWebViewDelegate {
 
@@ -26,11 +26,12 @@ class NewsDetailViewController: UIViewController, WKNavigationDelegate,UIWebView
         super.viewDidLoad()
         
         navigationController?.toolbarHidden = false
-                
+        navigationController?.navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 15)!] , forState: UIControlState.Normal)
+        
         // set navigationItem back bouuton color
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
-        navigationController?.toolbar.barTintColor = UIColor.darkGrayColor()
+        //navigationController?.toolbar.barTintColor = navigationController?.navigationBar.barTintColor
         
 		// self.navigationController?.navigationBarHidden = true
 		// let attributes = [NSFontAttributeName: UIFont.fontAwesomeOfSize(20)] as Dictionary!
@@ -52,6 +53,7 @@ class NewsDetailViewController: UIViewController, WKNavigationDelegate,UIWebView
             let webURL = NSURL(string: address)
             let request = NSURLRequest(URL: webURL!)
             self.webView.loadRequest(request)
+            FIRAnalytics.logEventWithName(kFIREventViewItem, parameters: [kFIRParameterItemName:link!])
         }
         
     }
@@ -60,7 +62,7 @@ class NewsDetailViewController: UIViewController, WKNavigationDelegate,UIWebView
         super.viewWillDisappear(animated)
         
         navigationController?.toolbarHidden = true
-        navigationController?.hidesBarsOnSwipe = false
+        //navigationController?.hidesBarsOnSwipe = false
         
         //navigationController?.popToRootViewControllerAnimated(animated)
         
@@ -71,7 +73,7 @@ class NewsDetailViewController: UIViewController, WKNavigationDelegate,UIWebView
             progressBar.hidden = webView.estimatedProgress == 1
             refreshButton.enabled = webView.estimatedProgress == 1
             
-            navigationController?.hidesBarsOnSwipe = webView.estimatedProgress == 1
+            //navigationController?.hidesBarsOnSwipe = webView.estimatedProgress == 1
             progressBar.setProgress(Float(webView.estimatedProgress), animated: true)
         }
     }
@@ -91,7 +93,10 @@ class NewsDetailViewController: UIViewController, WKNavigationDelegate,UIWebView
     
     @IBAction func shareLink(sender: AnyObject) {
         let activityViewController = UIActivityViewController(activityItems: [link! as NSString], applicationActivities: nil)
-        presentViewController(activityViewController, animated: true, completion: {})
+        presentViewController(activityViewController, animated: true, completion: {
+        
+            FIRAnalytics.logEventWithName(kFIREventShare, parameters: [kFIRParameterItemName:self.link!])
+        })
     }
     
     @IBAction func refreshWebPage(sender: AnyObject) {

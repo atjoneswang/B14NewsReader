@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5D0E10D3A00B79FD2E243B99 /* Pods_B14NewsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07594B29DC42ED397CA2697A /* Pods_B14NewsTests.framework */; };
 		855A989519FB901A968A8736 /* Pods_B14News.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 404E6752CA9A55F577557819 /* Pods_B14News.framework */; };
+		DF115DAA1CFAFC45008D5202 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF115DA91CFAFC45008D5202 /* GoogleService-Info.plist */; };
 		DFBC61731CF7E4EC00634850 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBC61721CF7E4EC00634850 /* AppDelegate.swift */; };
 		DFBC61781CF7E4EC00634850 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFBC61761CF7E4EC00634850 /* Main.storyboard */; };
 		DFBC617A1CF7E4EC00634850 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFBC61791CF7E4EC00634850 /* Assets.xcassets */; };
@@ -22,7 +23,6 @@
 		DFBC61A31CF8014900634850 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBC619B1CF8014900634850 /* StringHelper.swift */; };
 		DFBC61A61CF8017800634850 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFBC61A51CF8017800634850 /* WebKit.framework */; };
 		DFBC61A81CF801BD00634850 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBC61A71CF801BD00634850 /* NetworkHelper.swift */; };
-		DFBC61B01CF837FA00634850 /* NavTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBC61AF1CF837FA00634850 /* NavTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +42,7 @@
 		2FAC03CAFD764524CFA3FF2C /* Pods-B14News.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B14News.debug.xcconfig"; path = "Pods/Target Support Files/Pods-B14News/Pods-B14News.debug.xcconfig"; sourceTree = "<group>"; };
 		404E6752CA9A55F577557819 /* Pods_B14News.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_B14News.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB027645FDA559C2992B07A /* Pods-B14News.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B14News.release.xcconfig"; path = "Pods/Target Support Files/Pods-B14News/Pods-B14News.release.xcconfig"; sourceTree = "<group>"; };
+		DF115DA91CFAFC45008D5202 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DFBC616F1CF7E4EC00634850 /* B14News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = B14News.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFBC61721CF7E4EC00634850 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFBC61771CF7E4EC00634850 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		DFBC619B1CF8014900634850 /* StringHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		DFBC61A51CF8017800634850 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		DFBC61A71CF801BD00634850 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
-		DFBC61AF1CF837FA00634850 /* NavTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +138,7 @@
 				DFBC61791CF7E4EC00634850 /* Assets.xcassets */,
 				DFBC617B1CF7E4EC00634850 /* LaunchScreen.storyboard */,
 				DFBC617E1CF7E4EC00634850 /* Info.plist */,
+				DF115DA91CFAFC45008D5202 /* GoogleService-Info.plist */,
 			);
 			path = B14News;
 			sourceTree = "<group>";
@@ -181,7 +182,6 @@
 			children = (
 				DFBC61981CF8014900634850 /* NewsDetailViewController.swift */,
 				DFBC619A1CF8014900634850 /* NewsTableViewController.swift */,
-				DFBC61AF1CF837FA00634850 /* NavTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -296,6 +296,7 @@
 				DFBC619D1CF8014900634850 /* feed.json in Resources */,
 				DFBC617A1CF7E4EC00634850 /* Assets.xcassets in Resources */,
 				DFBC61781CF7E4EC00634850 /* Main.storyboard in Resources */,
+				DF115DAA1CFAFC45008D5202 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,7 +410,6 @@
 				DFBC61A01CF8014900634850 /* NewsDetailViewController.swift in Sources */,
 				DFBC61A81CF801BD00634850 /* NetworkHelper.swift in Sources */,
 				DFBC61A11CF8014900634850 /* NewsItem.swift in Sources */,
-				DFBC61B01CF837FA00634850 /* NavTableViewController.swift in Sources */,
 				DFBC61A31CF8014900634850 /* StringHelper.swift in Sources */,
 				DFBC61A21CF8014900634850 /* NewsTableViewController.swift in Sources */,
 				DFBC61731CF7E4EC00634850 /* AppDelegate.swift in Sources */,
@@ -543,6 +543,7 @@
 			baseConfigurationReference = 2FAC03CAFD764524CFA3FF2C /* Pods-B14News.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = B14News/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ios.j40.B14News;
@@ -555,6 +556,7 @@
 			baseConfigurationReference = AEB027645FDA559C2992B07A /* Pods-B14News.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = B14News/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ios.j40.B14News;
