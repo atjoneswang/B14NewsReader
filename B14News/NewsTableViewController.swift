@@ -17,6 +17,7 @@ import MobileCoreServices
 import SwiftyJSON
 import Firebase
 import GoogleMobileAds
+import SafariServices
 
 class NewsTableViewController: UITableViewController {
     
@@ -348,6 +349,11 @@ class NewsTableViewController: UITableViewController {
         }
     }
     
+    func openSafariController(url: String){
+        let svc = SFSafariViewController(URL: NSURL(string: url)!)
+        self.presentViewController(svc, animated: true, completion: nil)
+    }
+    
     
     override func restoreUserActivityState(activity: NSUserActivity) {
         if activity.activityType == CSSearchableItemActionType {
@@ -428,11 +434,6 @@ class NewsTableViewController: UITableViewController {
                 }
             }
             return cell
-            
-            
-        
-        
-        
 		/*
         if let imagePath = item.image {
 			let imgrequest = Alamofire.request(.GET, imagePath.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
@@ -446,6 +447,14 @@ class NewsTableViewController: UITableViewController {
 		
 	}
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let newsLink = feedArray[indexPath.row].link
+        
+        FIRAnalytics.logEventWithName(kFIREventViewItem, parameters: [kFIRParameterItemName:newsLink!])
+        
+        openSafariController(newsLink!)
+    }
+    /***
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showNews" {
             let destinationController = segue.destinationViewController as! NewsDetailViewController
@@ -464,7 +473,7 @@ class NewsTableViewController: UITableViewController {
             
         }
     }
-    
+    ***/
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
